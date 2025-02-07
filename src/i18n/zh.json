@@ -1,0 +1,12 @@
+{
+  "plzSetApi": "请设置 Api 链接",
+  "hello": "你好，我是你的助理，你可以在下方输入问题对我提问",
+  "getting": "获取中...",
+  "thinking": "思考中...",
+  "thought": "思考内容：",
+  "alert": {
+    "hint": "提示",
+    "cancel": "取消",
+    "return": "确定"
+  }
+}

@@ -1,0 +1,7 @@
+::-webkit-scrollbar {
+  @apply hidden;
+}
+
+body {
+  @apply m-[0px] p-[0px] bg-transparent select-none;
+}

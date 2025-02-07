@@ -1,0 +1,7 @@
+dialog[open] {
+  @apply animate-[dialog-show_0.3s_ease_normal];
+}
+
+dialog.hide {
+  @apply animate-[dialog-hide_0.3s_ease_normal];
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="status_bar_color">#111827</color>
+    <color name="navigation_bar_color">#3E4553</color>
+</resources>

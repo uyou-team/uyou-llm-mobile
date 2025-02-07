@@ -1,0 +1,12 @@
+{
+  "plzSetApi": "please set Api link",
+  "hello": "Hello, I am your Assistent, you can enter a question below to ask me",
+  "getting": "Getting...",
+  "thinking": "Thinking...",
+  "thought": "Thought:",
+  "alert": {
+    "hint": "hint",
+    "cancel": "Cancel",
+    "return": "Confirm"
+  }
+}
