@@ -3,6 +3,9 @@ module.exports = {
   content: ['./src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      screens: {
+        'tablet': '901px',
+      },
       keyframes: {
         'dialog-show': {
           form: {

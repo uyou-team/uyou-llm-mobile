@@ -94,8 +94,8 @@ const processedMsg = computed(() => {
 </script>
 
 <template>
-  <div v-if="isSys" class="flex w-[calc(100%-56x)] pl-2 py-1">
-    <div class="w-10 mr-2">
+  <div v-if="isSys" class="flex w-[calc(100%-56px)] pl-2 py-1">
+    <div class="w-10 mr-2 min-w-10">
       <img class="rounded-full" src="../../assets/system.jpg" alt="chatGPT" />
     </div>
     <div
@@ -104,13 +104,13 @@ const processedMsg = computed(() => {
       <span class="w-10 whitespace-normal break-words text-sm dark:text-white/70">{{ msg }}</span>
     </div>
   </div>
-  <div v-else-if="isMe && !isSys" class="flex w-[calc(100vw-56px)] pr-2 py-1 justify-end ml-[56px]">
+  <div v-else-if="isMe && !isSys" class="flex w-[calc(100%-56px)] pr-2 py-1 justify-end ml-[56px]">
     <div
       class="text-start bg-cyan-500 rounded-xl rounded-tr-md p-3 overflow-auto h-auto dark:bg-cyan-900 dark:text-white/70 w-auto max-w-[calc(100vw-112px)] shadow-md shadow-cyan-700/10"
     >
       <span class="w-10 whitespace-normal break-words text-white text-sm">{{ msg }}</span>
     </div>
-    <div class="w-10 ml-2 rounded-lg">
+    <div class="w-10 min-w-10 ml-2 rounded-lg">
       <img
         class="rounded-full dark:bg-gary-500/50 bg-white/50"
         src="../../assets/user.jpg"
@@ -118,8 +118,8 @@ const processedMsg = computed(() => {
       />
     </div>
   </div>
-  <div v-else class="flex w-[calc(100%-56x)] pl-2 py-1">
-    <div class="w-10 mr-2">
+  <div v-else class="flex w-[calc(100%-56px)] pl-2 py-1">
+    <div class="w-10 mr-2 min-w-10">
       <img class="rounded-full" src="../../assets/logo.png" alt="chatGPT" />
     </div>
     <div

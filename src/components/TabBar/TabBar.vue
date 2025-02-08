@@ -1,101 +1,58 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import Alert from '../Alert/Alert.vue'
-import { watchTriggerable } from '@vueuse/core'
+<script setup lang="ts" generic="T">
+import { ref } from 'vue';
 
-const key = ref(localStorage.getItem('key') ? localStorage.getItem('key') : '')
-const model = ref(localStorage.getItem('model') ? localStorage.getItem('model') : '')
-const systemPrompt = ref(localStorage.getItem('sysPro') ? localStorage.getItem('sysPro') : '')
+const { title = 'title', leftIcon = 'arrow_back', rightIcon = 'info', useTitleMenu } = defineProps<{
+  title: string
+  leftIconShow?: boolean
+  rightIconShow?: boolean
+  leftIcon?: string
+  rightIcon?: string
+  menuList?: T[]
+  useTitleMenu?: boolean
+}>()
 
-const models = ref([])
+const emit = defineEmits<{
+  leftFn: []
+  rightFn: []
+  menuFn: [T]
+}>()
 
-watchTriggerable(
-  key,
-  (newValue) => {
-    if (newValue !== '') {
-      fetch(`${newValue}/api/tags`)
-        .then((res) => res.json())
-        .then((data) => {
-          models.value = data.models
-        })
-    }
-  },
-  { immediate: true }
-)
+const showTitleMenuV = ref(false)
 
-const alertShow = ref(!localStorage.getItem('key'))
-
-const showAlert = (): void => {
-  isInfo.value = false
-  alertShow.value = true
-}
-
-const returnClick = (): void => {
-  alertShow.value = false
-  if (isInfo.value) {
-    return
-  }
-  isInfo.value = false
-  localStorage.setItem('key', key.value)
-  localStorage.setItem('model', model.value)
-  localStorage.setItem('sysPro', systemPrompt.value)
-  window.title = `uyou llm - ${model.value}`
-}
-
-const isInfo = ref(false)
-const openInfo = (): void => {
-  isInfo.value = true
-  alertShow.value = true
+function showTitleMenu() {
+  if (!useTitleMenu) return
+  showTitleMenuV.value = !showTitleMenuV.value  
 }
 </script>
 
 <template>
   <div class="flex justify-between px-3 py-4 items-center drag">
     <div
-      class="hover:bg-black/10 cursor-pointer w-8 h-8 flex justify-center items-center rounded-2xl no-drag"
-      @click="showAlert"
+      v-if="leftIconShow"
+      class="active:bg-black/10 cursor-pointer w-8 h-8 flex justify-center items-center rounded-2xl no-drag"
+      @click="emit('leftFn')"
     >
-      <span class="material-icons dark:text-white/70"> settings </span>
+      <span class="material-icons dark:text-white/70"> {{ leftIcon }} </span>
     </div>
-    <span class="dark:text-white/70">uyou llm - {{ model }}</span>
+    <div class="m-auto flex flex-col items-center" @click="showTitleMenu">
+      <span class="dark:text-white/70 font-bold">{{ title }}</span>
+      <div v-if="showTitleMenuV" class="absolute top-14 bg-white dark:bg-gray-600 w-auto rounded-xl p-4 shadow-xl">
+        <div
+          v-for="(item, index) in menuList"
+          :key="index"
+          class="p-2 active:bg-black/10 dark:text-white"
+          @click="emit('menuFn', item)"
+        >
+          {{ item.model }}
+        </div>
+      </div>
+    </div>
     <div
-      class="hover:bg-black/10 cursor-pointer w-8 h-8 flex justify-center items-center rounded-2xl no-drag"
-      @click="openInfo"
+      v-if="rightIconShow"
+      class="active:bg-black/10 cursor-pointer w-8 h-8 flex justify-center items-center rounded-2xl no-drag"
+      @click="emit('rightFn')"
     >
-      <span class="material-icons dark:text-white/70"> info </span>
+      <span class="material-icons dark:text-white/70"> {{ rightIcon }} </span>
     </div>
   </div>
-  <Alert
-    :title="isInfo ? $t('alert.hint') : $t('plzSetApi')"
-    :dialog-show="alertShow"
-    :cancel-button-show="!isInfo"
-    @cancel="alertShow = !alertShow"
-    @return="returnClick"
-  >
-    <div v-if="!isInfo" class="flex items-center w-max mb-2">
-      <span class="mr-2">Api Link:</span>
-      <input
-        v-model="key"
-        class="border-2 rounded dark:bg-gray-500/50 dark:text-white dark:border-gray-700/30 p-1 outline-cyan-500"
-      />
-    </div>
-    <div v-if="!isInfo" class="flex items-center w-max mb-2">
-      <span class="mr-2">Model:</span>
-      <select
-        v-model="model"
-        name="model"
-        class="border-2 rounded dark:bg-gray-500/50 dark:text-white dark:border-gray-700/30 p-1 outline-cyan-500"
-      >
-        <option v-for="m in models" :key="m.model" :value="m.model">{{ m.name }}</option>
-      </select>
-    </div>
-    <div v-if="!isInfo" class="flex items-center w-max">
-      <span class="mr-2">system prompt:</span>
-      <input
-        v-model="systemPrompt"
-        class="border-2 rounded dark:bg-gray-500/50 dark:text-white dark:border-gray-700/30 p-1 outline-cyan-500"
-      />
-    </div>
-    <span v-else>create for Ollama</span>
-  </Alert>
 </template>

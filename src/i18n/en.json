@@ -8,5 +8,7 @@
     "hint": "hint",
     "cancel": "Cancel",
     "return": "Confirm"
-  }
+  },
+  "settings": "Settings",
+  "addChat": "Add a new chat"
 }

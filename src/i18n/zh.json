@@ -8,5 +8,7 @@
     "hint": "提示",
     "cancel": "取消",
     "return": "确定"
-  }
+  },
+  "settings": "设置",
+  "addChat": "添加一个新会话"
 }
