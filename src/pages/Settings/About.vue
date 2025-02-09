@@ -5,10 +5,19 @@ import SettingsList from '../../components/SettingsList/SettingsList.vue';
 import SettingsItem from '../../components/SettingsList/SettingsItem/SettingsItem.vue';
 import SettingsItemSpace from '../../components/SettingsList/SettingsItemSpace/SettingsItemSpace.vue';
 import { useRouter } from 'vue-router';
+import { app } from '@tauri-apps/api'
+import { ref } from 'vue';
+import { open } from '@tauri-apps/plugin-shell'
 
 const { t } = useI18n()
 
 const router = useRouter()
+
+const appVersion = ref('')
+
+app.getVersion().then((version) => {
+  appVersion.value = version
+})
 </script>
 
 <template>
@@ -20,9 +29,11 @@ const router = useRouter()
     />
     <settings-list>
       <settings-item-space>
-        <div>{{ t('about') }}</div>
+        <img class="w-[150px] h-[150px] mb-2" src="../../assets/icon.png" alt="" srcset="">
+        <div class="font-bold text-[1.2rem]">uyou llm v{{ appVersion }}</div>
       </settings-item-space>
-      <settings-item :title="t('about')" @click="router.push('/setapi')" />
+      <settings-item title="release" @click="open('https://github.com/uyou-team/uyou-llm-mobile/releases')" />
+      <settings-item title="GitHub" @click="open('https://github.com/uyou-team/uyou-llm-mobile')" />
     </settings-list>
   </div>
 </template>

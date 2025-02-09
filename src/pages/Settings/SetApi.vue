@@ -63,7 +63,7 @@ watchTriggerable(
       <settings-item-space>
         <input 
           type="text" 
-          class="w-full outline-cyan-500 p-2 bg-gray-100/50 rounded-md"
+          class="w-full outline-cyan-500 p-2 bg-gray-100/50 dark:bg-gray-700 rounded-md"
           v-model="key"
         >
       </settings-item-space>
@@ -82,7 +82,7 @@ watchTriggerable(
       </template>
       <settings-item-text title="system promat" />
       <settings-item-space>
-        <textarea v-model="systemPrompt" type="text" class="border-none w-full p-2 outline-cyan-500 bg-gray-100/50 h-[200px]" />
+        <textarea v-model="systemPrompt" type="text" class="border-none rounded-md w-full p-2 outline-cyan-500 bg-gray-100/50 dark:bg-gray-700 h-[200px]" />
       </settings-item-space>
       <settings-item-button type="parmary" @click="save">
         <div>{{ t('save') }}</div>
