@@ -10,5 +10,7 @@
     "return": "Confirm"
   },
   "settings": "Settings",
-  "addChat": "Add a new chat"
+  "addChat": "Add a new chat",
+  "save": "",
+  "setapi": ""
 }

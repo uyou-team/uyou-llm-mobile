@@ -10,5 +10,8 @@
     "return": "确定"
   },
   "settings": "设置",
-  "addChat": "添加一个新会话"
+  "addChat": "添加一个新会话",
+  "save": "保存设置",
+  "setapi": "设置 API",
+  "about": "关于 uyou llm"
 }
