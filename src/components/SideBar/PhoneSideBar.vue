@@ -23,7 +23,7 @@ const windowWidthStore = useWindowWidthStore()
       <div class="pl-6 pt-4" @click.stop="emit('openFn')">
         <span class="material-icons dark:text-white/70 mr-4"> menu </span>
       </div>
-      <side-bar class="h-[calc(100vh-2.5rem)]" />
+      <side-bar class="!h-[calc(100vh-2.5rem)]" />
     </div>
   </div>
 </template>
