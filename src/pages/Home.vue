@@ -8,6 +8,7 @@ import { watchTriggerable } from '@vueuse/core'
 import { useCateStore, useWindowWidthStore } from '../store'
 import { useRouter } from 'vue-router'
 import PhoneSideBar from '../components/SideBar/PhoneSideBar.vue'
+import { platform } from '@tauri-apps/plugin-os'
 
 const { t } = useI18n()
 const router = useRouter()
@@ -85,7 +86,7 @@ const open = ref(false)
 </script>
 
 <template>
-  <div class="flex flex-col h-screen bg-white/30 dark:bg-white/10 w-full tablet:rounded-tl-2xl tablet:border-l-[1px] tablet:border-t-[1px] tablet:border-black/10 dark:tablet:border-white/10 tablet:border-solid">
+  <div class="flex flex-col h-screen bg-white/30 dark:bg-white/10 w-full tablet:border-l-[1px] tablet:border-black/10 dark:tablet:border-white/10 tablet:border-solid">
     <tab-bar :title="`uyou llm - ${model}`" :use-title-menu="true" :menu-list="models" :left-icon-show="windowWidthStore.width <= 900" left-icon="menu" @menu-fn="(item) => setModel(item.model)" @left-fn="open = true"  />
     <div ref="body" class="overflow-scroll flex-1 scroll-smooth pb-1 max-w-[800px] m-auto w-full">
       <div class="w-full">
@@ -109,6 +110,7 @@ const open = ref(false)
         <span class="material-icons dark:text-white"> send </span>
       </div>
     </div>
+    <div v-if="platform() === 'android'" class="h-[36px] bg-white/50 dark:bg-gray-500/50"></div>
   </div>
   <phone-side-bar :open @open-fn="open=false" />
   <Alert

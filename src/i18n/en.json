@@ -11,6 +11,7 @@
   },
   "settings": "Settings",
   "addChat": "Add a new chat",
-  "save": "",
-  "setapi": ""
+  "save": "Save",
+  "setapi": "Set API link",
+  "about": "About uyou llm"
 }

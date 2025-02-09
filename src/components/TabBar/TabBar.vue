@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="T">
 import { ref } from 'vue';
+import { platform } from '@tauri-apps/plugin-os'
 
 const { title = 'title', leftIcon = 'arrow_back', rightIcon = 'info', useTitleMenu } = defineProps<{
   title: string
@@ -26,6 +27,7 @@ function showTitleMenu() {
 </script>
 
 <template>
+  <div v-if="platform() === 'android'" class="h-[36px]"></div>
   <div class="flex justify-between px-3 py-4 items-center drag">
     <template v-if="true">
       <div

@@ -52,7 +52,7 @@ watchTriggerable(
 </script>
 
 <template>
-  <div class="flex flex-col h-screen bg-white/30 dark:bg-white/10 w-full tablet:rounded-tl-2xl tablet:border-l-[1px] tablet:border-t-[1px] tablet:border-black/10 dark:tablet:border-white/10 tablet:border-solid">
+  <div class="flex flex-col h-screen bg-white/30 dark:bg-white/10 w-full tablet:border-l-[1px] tablet:border-black/10 dark:tablet:border-white/10 tablet:border-solid">
     <tab-bar 
       :title="t('setapi')" 
       :left-icon-show="true"
@@ -80,7 +80,7 @@ watchTriggerable(
           />
         </settings-item-box>
       </template>
-      <settings-item-text title="system promat" />
+      <settings-item-text title="system prompt" />
       <settings-item-space>
         <textarea v-model="systemPrompt" type="text" class="border-none rounded-md w-full p-2 outline-cyan-500 bg-gray-100/50 dark:bg-gray-700 h-[200px]" />
       </settings-item-space>
