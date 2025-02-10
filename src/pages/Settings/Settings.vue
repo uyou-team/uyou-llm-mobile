@@ -17,7 +17,7 @@ const router = useRouter()
     <tab-bar 
       :title="t('settings')" 
       :left-icon-show="!deviceStore.isTablet"
-      @left-fn="router.back()"
+      @left-fn="router.push('/')"
     />
     <settings-list>
       <settings-item :title="t('setapi')" @click="router.push('/setapi?from=settings')" />
