@@ -7,9 +7,9 @@ import SetApi from './pages/Settings/SetApi.vue'
 import About from './pages/Settings/About.vue'
 
 const routes = [
-  { path: '/', component: Home },
+  { path: '/', component: Home, name: 'home' },
   { path: '/chat', component: Chat },
-  { path: '/settings', component: Settings },
+  { path: '/settings', component: Settings, name: 'settings' },
   { path: '/setapi', component: SetApi },
   { path: '/about', component: About },
 ]

@@ -20,8 +20,8 @@ const router = useRouter()
       @left-fn="router.back()"
     />
     <settings-list>
-      <settings-item :title="t('setapi')" @click="router.push('/setapi')" />
-      <settings-item :title="t('about')" @click="router.push('/about')" />
+      <settings-item :title="t('setapi')" @click="router.push('/setapi?from=settings')" />
+      <settings-item :title="t('about')" @click="router.push('/about?from=settings')" />
     </settings-list>
   </div>
 </template>

@@ -27,6 +27,7 @@ class MainActivity : TauriActivity() {
   
         // Ensure the status bar is fully transparent
         window.statusBarColor = android.graphics.Color.TRANSPARENT
+        window.navigationBarColor = android.graphics.Color.TRANSPARENT
       
 //        setBar(window, getColor(R.color.status_bar_color), getColor(R.color.navigation_bar_color))
     }

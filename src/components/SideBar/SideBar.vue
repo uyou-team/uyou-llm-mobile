@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useCateStore, useChatStore, useDeviceStore } from '../../store';
 import { platform } from '@tauri-apps/plugin-os'
 
 const { t } = useI18n()
 const router = useRouter()
+const route = useRoute()
 
 const cateStore = useCateStore()
 const chatStore = useChatStore()
@@ -24,7 +25,7 @@ function removeCate(id: string) {
     <div class="flex-1 p-2 overflow-y-scroll">
       <div>
         <div 
-          class="flex p-4 items-center w-full active:bg-black/20 dark:active:bg-white/20 rounded-lg"
+          :class="`flex p-4 items-center w-full ${route.name === 'home' ? 'bg-black/20' : ''} active:bg-black/20 dark:active:bg-white/20 rounded-lg`"
           @click="router.push('/')"
         >
           <span class="material-icons dark:text-white/70 mr-4"> add_comment </span>
@@ -34,13 +35,13 @@ function removeCate(id: string) {
           v-for="cate in cateStore.cateList" 
           :key="cate.id"
           @click="router.push(`/chat?id=${cate.id}`)"
-          class="flex justify-between p-4 items-center w-full active:bg-black/20 dark:active:bg-white/20 rounded-lg"
+          :class="`flex justify-between p-4 items-center w-full ${route.query.id === cate.id ? 'bg-black/20' : ''} active:bg-black/20 dark:active:bg-white/20 rounded-lg`"
         >
           <div class="flex items-center">
             <span class="material-icons dark:text-white/70 mr-4"> message </span>
             <span class="font-bold dark:text-white/70">{{ cate.name }}</span>
           </div>
-          <div @click.stop="removeCate(cate.id)">
+          <div class="flex items-center justify-center" @click.stop="removeCate(cate.id)">
             <span class="material-icons dark:text-white/70 mr-4"> delete </span>
           </div>
         </div>
@@ -48,7 +49,7 @@ function removeCate(id: string) {
     </div>
     <div class="mb-6 px-2">
       <div 
-        class="flex p-4 items-center w-full active:bg-black/20 dark:active:bg-white/20 rounded-lg"
+        :class="`flex p-4 items-center w-full ${route.name === 'settings' || route.query.from === 'settings' ? 'bg-black/20' : ''} active:bg-black/20 dark:active:bg-white/20 rounded-lg`"
         @click="router.push('/settings')"
       >
         <span class="material-icons dark:text-white/70 mr-4"> settings </span>
