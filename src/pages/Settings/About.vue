@@ -4,6 +4,7 @@ import TabBar from '../../components/TabBar/TabBar.vue';
 import SettingsList from '../../components/SettingsList/SettingsList.vue';
 import SettingsItem from '../../components/SettingsList/SettingsItem/SettingsItem.vue';
 import SettingsItemSpace from '../../components/SettingsList/SettingsItemSpace/SettingsItemSpace.vue';
+import SettingsItemBox from '../../components/SettingsList/SettingsItemBox/SettingsItemBox.vue';
 import { useRouter } from 'vue-router';
 import { app } from '@tauri-apps/api'
 import { ref } from 'vue';
@@ -32,8 +33,10 @@ app.getVersion().then((version) => {
         <img class="w-[150px] h-[150px] mb-2" src="../../assets/icon.png" alt="" srcset="">
         <div class="font-bold text-[1.2rem]">uyou llm v{{ appVersion }}</div>
       </settings-item-space>
-      <settings-item title="release" @click="open('https://github.com/uyou-team/uyou-llm-mobile/releases')" />
-      <settings-item title="GitHub" @click="open('https://github.com/uyou-team/uyou-llm-mobile')" />
+      <settings-item-box>
+        <settings-item title="GitHub" @click="open('https://github.com/uyou-team/uyou-llm-mobile')" />
+        <settings-item title="release" @click="open('https://github.com/uyou-team/uyou-llm-mobile/releases')" />
+      </settings-item-box>
       <settings-item title="Sponsor" @click="router.push('/sponsor?from=settings')" />
     </settings-list>
   </div>

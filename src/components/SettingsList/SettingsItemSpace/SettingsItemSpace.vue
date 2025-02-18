@@ -10,13 +10,13 @@ const maxWidth = computed(() => {
 </script>
 
 <template>
-  <div class="item-box flex-col bg-white p-4 dark:bg-gray-600 dark:text-white">
+  <div class="item flex-col bg-white p-4 dark:bg-gray-600 dark:text-white">
     <slot/>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.item-box {
+.item {
   display: flex;
   justify-content: center;
   align-items: center;

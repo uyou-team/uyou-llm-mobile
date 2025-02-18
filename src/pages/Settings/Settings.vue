@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n';
 import TabBar from '../../components/TabBar/TabBar.vue';
 import SettingsList from '../../components/SettingsList/SettingsList.vue';
 import SettingsItem from '../../components/SettingsList/SettingsItem/SettingsItem.vue';
+import SettingsItemBox from '../../components/SettingsList/SettingsItemBox/SettingsItemBox.vue';
 import { useDeviceStore } from '../../store';
 import { useRouter } from 'vue-router';
 
@@ -20,7 +21,10 @@ const router = useRouter()
       @left-fn="router.push('/')"
     />
     <settings-list>
-      <settings-item :title="t('setapi')" @click="router.push('/setapi?from=settings')" />
+      <settings-item-box>
+        <settings-item :title="t('setapi')" @click="router.push('/setapi?from=settings')" />
+        <settings-item :title="t('otherChatSet')" @click="router.push('/otherchatset?from=settings')" />
+      </settings-item-box>
       <settings-item :title="t('about')" @click="router.push('/about?from=settings')" />
     </settings-list>
   </div>

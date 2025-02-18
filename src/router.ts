@@ -6,6 +6,7 @@ import Chat from './pages/Chat.vue'
 import SetApi from './pages/Settings/SetApi.vue'
 import About from './pages/Settings/About.vue'
 import Sponsor from './pages/Settings/Sponsor.vue'
+import OtherChatSet from './pages/Settings/OtherChatSet.vue'
 
 const routes = [
   { path: '/', component: Home, name: 'home' },
@@ -14,6 +15,7 @@ const routes = [
   { path: '/setapi', component: SetApi },
   { path: '/about', component: About },
   { path: '/sponsor', component: Sponsor },
+  { path: '/otherchatset', component: OtherChatSet },
 ]
 
 const router = createRouter({

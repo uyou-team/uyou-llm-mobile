@@ -1,7 +1,7 @@
 {
   "name": "uyou-llm-mobile",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -17,6 +17,8 @@
     "@tauri-apps/plugin-shell": "~2",
     "@types/markdown-it": "^14.1.2",
     "@vueuse/core": "^12.5.0",
+    "framework7": "^8.3.4",
+    "framework7-vue": "^8.3.4",
     "highlight.js": "^11.11.1",
     "material-design-icons-iconfont": "^6.7.0",
     "ollama": "^0.5.12",

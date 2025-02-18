@@ -62,9 +62,9 @@ function setModel(useModel: string): void {
 
 const returnClick = (): void => {
   alertShow.value = false
-  localStorage.setItem('key', key.value)
-  localStorage.setItem('model', model.value)
-  localStorage.setItem('sysPro', systemPrompt.value)
+  localStorage.setItem('key', key.value!)
+  localStorage.setItem('model', model.value!)
+  localStorage.setItem('sysPro', systemPrompt.value!)
 }
 
 watchTriggerable(
